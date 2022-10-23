@@ -60,29 +60,23 @@ public class TestMain {
     public void step7() throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.videoRenderer());
-
         System.out.println(ElementsBrowser.distributorDetails(driver).get(1).getText());
        ElementsBrowser.testedVideo(driver).get(1).click();
-        System.out.println(ElementsBrowser.testedVideo(driver).size());
-
-     //   Functions.videoSearch(driver,ElementsBrowser.testedVideo(driver),findOfVideoURL);
+     // Functions.videoSearch(driver,ElementsBrowser.testedVideo(driver),findOfVideoURL);
         System.out.println(selectedVideo);
+
+
     }
     @Test
     public void step8() throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitVisibilityOfElementLocated(driver,ElementsBrowser.byPlayVideo());
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.byPlayVideo());
-//        BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
-//        while (!ElementsBrowser.skipAdButton(driver).isDisplayed()){
-//            BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
-//            if ( ElementsBrowser.skipAdButton(driver).isDisplayed()){
-//                ElementsBrowser.skipAdButton(driver).click();
-//            }
-//            sleep(100);
-//        }
+        Functions.scrollDown(driver);
+        Functions.skippingAd(driver);
 
-        BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
+        ///
+       // BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
         ElementsBrowser.playVideo(driver).click();
 
     }
@@ -90,6 +84,7 @@ public class TestMain {
     public void step9 () throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
+        Functions.scrollDown(driver);
         if (ElementsBrowser.moreInformationAboutVideo(driver).isDisplayed()){
         ElementsBrowser.moreInformationAboutVideo(driver).click();
         }
