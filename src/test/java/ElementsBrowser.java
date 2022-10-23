@@ -3,7 +3,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ElementsBrowser {
-
+    public  static By previewBar(){
+        return By.id("chips");
+    }
     public static  By bycssSelectorSearchFie( ){
         return By.cssSelector("ytd-searchbox#search");
     }
@@ -47,5 +49,12 @@ public class ElementsBrowser {
     public static WebElement skipAdButton(WebDriver driver){
         return driver.findElement(bySkipAdButton());
     }
+
+    public static WebElement channelDetails (WebDriver driver){
+        return driver.findElement(By.id("meta-contents"));
+    }
+    public  static  WebElement moreInformationAboutVideo(WebDriver driver){
+        return channelDetails(driver).findElement(By.id("more"));
+}
 
 }

@@ -11,13 +11,15 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 public class TestMain {
+
     WebDriver driver;
     String selectedVideo,findOfVideoURL="watch?v=ybXrrTX3LuI";
+    String artistName;
     boolean testboolean;
 
     @BeforeTest
     public void setup() {
-        //ExtentReports extent = new ExtentReports();
+       // ExtentReports extent = new ExtentReports();
         driver= BrowserDriver.chromeDriverBrowser("https://www.youtube.com");
     }
     @Test
@@ -29,6 +31,8 @@ public class TestMain {
     @Test
     public void step2(){
         ElementsBrowser.searchField(driver).sendKeys("I Will Survive - Alien song" + Keys.ENTER);
+        BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.previewBar());
+
     }
     @Test
     /* Opens and closes the filter window because every girl closes this window
@@ -60,26 +64,15 @@ public class TestMain {
     public void step7() throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.videoRenderer());
-
         List<WebElement> testedVideo = driver.findElements(By.id("title-wrapper"));
+        List<WebElement> a=driver.findElements(By.id("channel-info"));
+        System.out.println(a.get(1).getText());
         testedVideo.get(1).click();
         System.out.println(testedVideo.size());
-//        for (int i = testedVideo.size();i >testedVideo.size() ;i--) {
-//
-//            selectedVideo = testedVideo.get(i).findElement(By.tagName("a")).getAttribute("href");
-//
-//          System.out.println(findOfVideoURL.equals(selectedVideo));
-//            if(findOfVideoURL.equals(selectedVideo)){
-//                System.out.println(findOfVideoURL.equals(selectedVideo));
-//                testedVideo.get(i).click();
-//            return;
-//            }
-//           else {
-//                testedVideo= driver.findElements(By.id("title-wrapper"));
-//
-//
-//            }
-//        }
+
+     //   Functions.videoSearch(driver,testedVideo,findOfVideoURL);
+
+
         System.out.println(selectedVideo);
     }
     @Test
@@ -87,17 +80,28 @@ public class TestMain {
         sleep(1000);
         BrowserDriver.waitVisibilityOfElementLocated(driver,ElementsBrowser.byPlayVideo());
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.byPlayVideo());
-        BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
-        while (!ElementsBrowser.skipAdButton(driver).isDisplayed()){
-            BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
-            if ( ElementsBrowser.skipAdButton(driver).isDisplayed()){
-                ElementsBrowser.skipAdButton(driver).click();
-            }
-            sleep(100);
-        }
+//        BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
+//        while (!ElementsBrowser.skipAdButton(driver).isDisplayed()){
+//            BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
+//            if ( ElementsBrowser.skipAdButton(driver).isDisplayed()){
+//                ElementsBrowser.skipAdButton(driver).click();
+//            }
+//            sleep(100);
+//        }
 
         BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
         ElementsBrowser.playVideo(driver).click();
+
+    }
+    @Test
+    public void step9 () throws InterruptedException {
+        sleep(1000);
+        BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
+        if (ElementsBrowser.moreInformationAboutVideo(driver).isDisplayed()){
+        ElementsBrowser.moreInformationAboutVideo(driver).click();
+        }
+        artistName= ElementsBrowser.channelDetails(driver).getText();
+        System.out.println(artistName);
     }
     @AfterTest
     public void closeAllPages(){
@@ -105,4 +109,3 @@ public class TestMain {
         // driver.close();
     }
 }
-//#thumbnail
