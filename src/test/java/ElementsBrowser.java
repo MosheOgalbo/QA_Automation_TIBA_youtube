@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class ElementsBrowser {
     public  static By previewBar(){
         return By.id("chips");
@@ -36,6 +38,12 @@ public class ElementsBrowser {
     }
     public static  By videoRenderer (){
         return By.tagName("ytd-video-renderer");
+    }
+    public static List<WebElement> distributorDetails(WebDriver driver){
+        return driver.findElements(By.id("channel-info"));
+    }
+    public  static List<WebElement> testedVideo(WebDriver driver){
+        return driver.findElements(By.id("title-wrapper"));
     }
     public static By byPlayVideo(){
         return By.id("movie_player");

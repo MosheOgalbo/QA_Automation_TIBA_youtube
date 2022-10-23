@@ -1,12 +1,8 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -64,15 +60,12 @@ public class TestMain {
     public void step7() throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.videoRenderer());
-        List<WebElement> testedVideo = driver.findElements(By.id("title-wrapper"));
-        List<WebElement> a=driver.findElements(By.id("channel-info"));
-        System.out.println(a.get(1).getText());
-        testedVideo.get(1).click();
-        System.out.println(testedVideo.size());
 
-     //   Functions.videoSearch(driver,testedVideo,findOfVideoURL);
+        System.out.println(ElementsBrowser.distributorDetails(driver).get(1).getText());
+       ElementsBrowser.testedVideo(driver).get(1).click();
+        System.out.println(ElementsBrowser.testedVideo(driver).size());
 
-
+     //   Functions.videoSearch(driver,ElementsBrowser.testedVideo(driver),findOfVideoURL);
         System.out.println(selectedVideo);
     }
     @Test
