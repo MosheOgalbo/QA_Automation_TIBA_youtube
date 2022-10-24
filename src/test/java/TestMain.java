@@ -37,7 +37,7 @@ public class TestMain {
         BrowserDriver.waitDrivervElementToBeClickable(driver, ElementsBrowser.byFILTERS());
         ElementsBrowser.elementFILTERS(driver).click();
         BrowserDriver.waitDrivervElementToBeClickable(driver, ElementsBrowser.byScreenOfFilters());
-        sleep(10);
+        sleep(100);
         ElementsBrowser.elementFILTERS(driver).click();
     }
     @Test
@@ -54,31 +54,29 @@ public class TestMain {
         BrowserDriver.waitDrivervElementToBeClickable(driver, ElementsBrowser.byFILTERS());
         ElementsBrowser.elementFILTERS(driver).click();
         ElementsBrowser.elementSortByViewCount(driver).click();
-        sleep(100);
+        sleep(1000);
     }
     @Test
     public void step7() throws InterruptedException {
         sleep(1000);
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.videoRenderer());
-        System.out.println(ElementsBrowser.distributorDetails(driver).get(1).getText());
-       ElementsBrowser.testedVideo(driver).get(1).click();
-     // Functions.videoSearch(driver,ElementsBrowser.testedVideo(driver),findOfVideoURL);
-        System.out.println(selectedVideo);
 
+        // The dynamite scrolling video find function does not work well
+        // Functions.videoSearch(driver,ElementsBrowser.testedVideo(driver),findOfVideoURL);
+        System.out.println(ElementsBrowser.distributorDetails(driver).get(3).getText());
+        ElementsBrowser.testedVideo(driver).get(3).click();
+        //BrowserDriver.waitInvisibilityOfElementLocated(driver, By.cssSelector("style-scope ytd-mini-guide-renderer"));
 
     }
     @Test
     public void step8() throws InterruptedException {
         sleep(1000);
+
         BrowserDriver.waitVisibilityOfElementLocated(driver,ElementsBrowser.byPlayVideo());
         BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.byPlayVideo());
         Functions.scrollDown(driver);
         Functions.skippingAd(driver);
-
-        ///
-       // BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
         ElementsBrowser.playVideo(driver).click();
-
     }
     @Test
     public void step9 () throws InterruptedException {

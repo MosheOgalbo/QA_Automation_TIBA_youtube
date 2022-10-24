@@ -52,7 +52,7 @@ public class ElementsBrowser {
         return driver.findElement(byPlayVideo());
     }
     public static By  bySkipAdButton(){
-        return By.xpath("//*[@id='skip-button:l']/span/button");
+        return By.cssSelector("#skip-button\\:6 > span > button");
     }
     public static WebElement skipAdButton(WebDriver driver){
         return driver.findElement(bySkipAdButton());
