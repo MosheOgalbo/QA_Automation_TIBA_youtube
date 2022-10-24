@@ -42,9 +42,9 @@ public class Functions {
 
     public static void skippingAd (WebDriver driver) throws InterruptedException {
       //  BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
-int i=0;
+        int i=0;
         sleep(1000);
-        while (ElementsBrowser.skipAdButton(driver).isEnabled()){
+        while (ElementsBrowser.skipAdButton(driver).isDisplayed()){
             sleep(1000);
             BrowserDriver.waitDrivervElementToBeClickable(driver,ElementsBrowser.bySkipAdButton());
             if ( ElementsBrowser.skipAdButton(driver).isDisplayed()){
@@ -53,7 +53,7 @@ int i=0;
                 //BrowserDriver.waitInvisibilityOfElementLocated(driver,ElementsBrowser.bySkipAdButton());
                 i++;
             }
-            if (i>6){
+            if (i>3){
                 return;
             }
 
